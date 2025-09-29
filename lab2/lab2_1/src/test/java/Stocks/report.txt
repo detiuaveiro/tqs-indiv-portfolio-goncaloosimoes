@@ -29,15 +29,15 @@ WARNING: A Java agent has been loaded dynamically (/Users/goncalosimoes/.m2/repo
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.494 s -- in Stocks.StocksPortfolioTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.548 s -- in Stocks.StocksPortfolioTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.136 s
-[INFO] Finished at: 2025-09-29T14:38:01+01:00
+[INFO] Total time:  1.285 s
+[INFO] Finished at: 2025-09-29T14:54:46+01:00
 [INFO] ------------------------------------------------------------------------
