@@ -82,4 +82,3 @@ Esta separação garante que cada camada tenha **uma responsabilidade clara**, t
 ---
 
 **Conclusão:** A divisão em `boundary`, `services` e `data` segue o princípio de **Separation of Concerns**, permitindo que cada camada concentre-se numa única responsabilidade, aumentando a clareza, manutenção e testabilidade do sistema.
-"""
