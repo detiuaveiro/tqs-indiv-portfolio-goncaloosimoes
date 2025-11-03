@@ -40,17 +40,19 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
+      - name: Build (tests + cobertura)
         working-directory: HW1/zeromonos
+        run: mvn -B clean verify -DskipTests=false -Dsonar.skip=true
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: HW1/zeromonos
+          args: >-
+            -Dsonar.organization=${{ vars.SONAR_ORG }}
+            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -B clean verify \
-          org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
-          -DskipTests=false \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.organization=${{ vars.SONAR_ORG }} \
-          -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
       - name: Upload JaCoCo coverage reports
         uses: actions/upload-artifact@v4
         with:
