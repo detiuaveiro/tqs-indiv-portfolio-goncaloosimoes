@@ -1,3 +1,6 @@
 [submodule "labs/HW1"]
 	path = labs/HW1
 	url = https://github.com/goncaloosimoes/ZeroMonos.git
+[submodule "HW1"]
+	path = HW1
+	url = https://github.com/goncaloosimoes/ZeroMonos.git
