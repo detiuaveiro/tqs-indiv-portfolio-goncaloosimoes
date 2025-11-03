@@ -13,7 +13,7 @@ Sistema web para agendamento e gestão de recolhas de resíduos municipais em Po
 
 **Testes & Qualidade**
 - JUnit 5, RestAssured 5.4.0, Cucumber 7.18.0, Selenium 4.19.1
-- JaCoCo (cobertura >60%), SonarQube
+- JaCoCo, SonarQube
 
 **Documentação API**
 - SpringDoc OpenAPI (Swagger UI)
@@ -22,7 +22,7 @@ Sistema web para agendamento e gestão de recolhas de resíduos municipais em Po
 - Maven + GitHub Actions
 
 ***https://start.spring.io/*** was used to kickstart the project.
-![Spring Initializr](spring_initializr.png)
+![Spring Initializr](docs/spring_initializr.png)
 
 ## 🏗️ Arquitetura
 
@@ -95,7 +95,7 @@ Arquitetura em **camadas** seguindo os princípios de separação de responsabil
 
 ## 🧪 Modelo de Testes
 
-Estratégia de testes **em pirâmide** combinando múltiplas abordagens para garantir qualidade e cobertura >60%:
+Estratégia de testes **em pirâmide** combinando múltiplas abordagens para garantir qualidade:
 
 ### Testes Unitários
 **Isolamento** com mocks e stubs:
@@ -132,7 +132,11 @@ open target/site/jacoco/index.html
 ## 📊 Qualidade de Código
 
 **Ferramentas**: JaCoCo + SonarQube  
-**Cobertura mínima**: 60% (validado no build)
+**Cobertura**: Relatórios gerados via JaCoCo, thresholds configurados no SonarQube
+
+![JaCoCo Report](docs/jacoco_report.png)
+
+![SonarQube Report](docs/sonarqube_report.png)
 
 ```bash
 # Gerar relatório de cobertura
@@ -152,7 +156,7 @@ docker run -d --name sonarqube -p 9000:9000 sonarqube
 
 ## 📚 Documentação API (Swagger UI)
 
-![Swagger UI](swagger_ui.png)
+![Swagger UI](docs/swagger_ui.png)
 
 Interface interativa da API REST disponível em:
 - **Swagger UI**: http://localhost:8080/swagger-ui.html

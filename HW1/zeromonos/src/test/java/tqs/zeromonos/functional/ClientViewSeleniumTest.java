@@ -313,11 +313,18 @@ class ClientViewSeleniumTest {
         WebElement searchButton = driver.findElement(By.id("search-btn"));
         searchButton.click();
 
-        // Aguardar detalhes aparecerem
+        // Aguardar detalhes aparecerem e serem exibidos
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("booking-details")));
+        
+        // Aguardar que a classe "hidden" seja removida
+        wait.until(ExpectedConditions.not(ExpectedConditions.attributeContains(By.id("booking-details"), "class", "hidden")));
 
-        WebElement detailsSection = driver.findElement(By.id("booking-details"));
-        assertFalse(detailsSection.getDomAttribute("class").contains("hidden"));
+        // Aguardar que o details-grid tenha conteúdo
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("details-grid")));
+        wait.until(d -> {
+            WebElement grid = d.findElement(By.id("details-grid"));
+            return !grid.getText().isEmpty();
+        });
 
         // Verificar se token está nos detalhes
         WebElement detailsGrid = driver.findElement(By.id("details-grid"));
@@ -370,21 +377,21 @@ class ClientViewSeleniumTest {
         WebElement searchButton = driver.findElement(By.id("search-btn"));
         searchButton.click();
 
-        // Aguardar detalhes
+        // Aguardar detalhes e que o botão de cancelar seja clicável
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("booking-details")));
-
-        // Clicar no botão de cancelar - usar JavaScript para garantir clique
-        WebElement cancelButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cancel-btn")));
+        
+        // Aguardar que o botão de cancelar esteja visível e clicável (não disabled)
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("cancel-btn")));
+        
+        // Re-obter o elemento para evitar StaleElementReference
+        WebElement cancelButton = driver.findElement(By.id("cancel-btn"));
+        
         // Fazer scroll até ao botão
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", cancelButton);
         Thread.sleep(500);
-        // Usar JavaScript para clicar se necessário
-        try {
-            cancelButton.click();
-        } catch (Exception e) {
-            // Se falhar, usar JavaScript para clicar
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cancelButton);
-        }
+        
+        // Usar JavaScript para clicar diretamente
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cancelButton);
 
         // Confirmar no alert (se existir)
         try {
