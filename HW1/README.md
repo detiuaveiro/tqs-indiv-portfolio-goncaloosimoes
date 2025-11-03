@@ -24,6 +24,62 @@ Sistema web para agendamento e gestão de recolhas de resíduos municipais em Po
 ***https://start.spring.io/*** was used to kickstart the project.
 ![Spring Initializr](docs/spring_initializr.png)
 
+## 📁 Estrutura do Projeto
+
+```
+HW1/
+├── docs/                          # Screenshots e documentação
+│   ├── spring_initializr.png
+│   ├── swagger_ui.png
+│   ├── jacoco_report.png
+│   └── sonarqube_report.png
+├── zeromonos/
+│   ├── src/main/java/tqs/zeromonos/
+│   │   ├── boundary/              # Controllers REST
+│   │   │   ├── BookingController.java
+│   │   │   ├── StaffBookingController.java
+│   │   │   └── RestExceptionHandler.java
+│   │   ├── services/              # Lógica de negócio
+│   │   │   ├── BookingService.java
+│   │   │   ├── BookingServiceImplementation.java
+│   │   │   └── MunicipalityImportService.java
+│   │   ├── data/                  # Entities e Repositories
+│   │   │   ├── Booking.java
+│   │   │   ├── Municipality.java
+│   │   │   ├── StateChange.java
+│   │   │   ├── BookingRepository.java
+│   │   │   ├── MunicipalityRepository.java
+│   │   │   ├── BookingStatus.java
+│   │   │   └── TimeSlot.java
+│   │   ├── dto/                   # Data Transfer Objects
+│   │   │   ├── BookingRequestDTO.java
+│   │   │   └── BookingResponseDTO.java
+│   │   ├── utils/                 # Utilitários
+│   │   │   ├── DateValidator.java
+│   │   │   └── HistoryMapper.java
+│   │   └── ZeromonosApplication.java
+│   ├── src/main/resources/
+│   │   ├── application.properties # Configuração
+│   │   ├── static/                # Frontend HTML/CSS/JS
+│   │   │   ├── index.html
+│   │   │   ├── create-booking.html
+│   │   │   ├── lookup-booking.html
+│   │   │   ├── staff-panel.html
+│   │   │   ├── css/
+│   │   │   └── js/
+│   │   └── templates/
+│   ├── src/test/java/tqs/zeromonos/
+│   │   ├── isolation/             # Testes unitários
+│   │   ├── functional/            # Testes de integração/E2E
+│   │   └── cucumber/              # Testes BDD
+│   ├── pom.xml
+│   ├── sonar-project.properties
+│   └── run-sonar.sh
+├── .github/workflows/
+│   └── build.yml                  # CI/CD pipeline
+└── README.md
+```
+
 ## 🏗️ Arquitetura
 
 Arquitetura em **camadas** seguindo os princípios de separação de responsabilidades:
@@ -173,7 +229,7 @@ Documentação gerada automaticamente via SpringDoc OpenAPI 2.7.0
 Workflow automatizado configurado em `.github/workflows/build.yml`:
 
 **Funcionalidades**:
-- ✅ Build e testes automáticos em cada push para `main`
+- ✅ Build e testes automáticos em cada push/PR para `master`/`main`
 - ✅ Análise SonarQube integrada
 - ✅ Upload de relatórios JaCoCo como artefatos
 - ✅ Cache de dependências Maven e SonarQube
