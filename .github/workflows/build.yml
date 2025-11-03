@@ -46,6 +46,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: zeromonos/target/site/jacoco/
+          path: HW1/zeromonos/target/site/jacoco/
           retention-days: 7
 
