@@ -18,8 +18,8 @@ Sistema web para agendamento e gestão de recolhas de resíduos municipais em Po
 **Documentação API**
 - SpringDoc OpenAPI (Swagger UI)
 
-**Build**
-- Maven
+**Build & CI/CD**
+- Maven + GitHub Actions
 
 ***https://start.spring.io/*** was used to kickstart the project.
 ![Spring Initializr](spring_initializr.png)
@@ -163,6 +163,22 @@ Interface interativa da API REST disponível em:
 - **Staff** (`/api/staff/bookings`) - Listar, atualizar estados
 
 Documentação gerada automaticamente via SpringDoc OpenAPI 2.7.0
+
+## 🔄 CI/CD (GitHub Actions)
+
+Workflow automatizado configurado em `.github/workflows/build.yml`:
+
+**Funcionalidades**:
+- ✅ Build e testes automáticos em cada push para `main`
+- ✅ Análise SonarQube integrada
+- ✅ Upload de relatórios JaCoCo como artefatos
+- ✅ Cache de dependências Maven e SonarQube
+
+**Configurar Secrets no GitHub**:
+- `SONAR_TOKEN`: Token do SonarCloud/SonarQube
+- `SONAR_HOST_URL`: URL do servidor SonarQube
+
+**Ver resultados**: GitHub → Actions → Build and analyze
 
 ## 🚀 Executar Aplicação
 
