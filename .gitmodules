@@ -1,0 +1,3 @@
+[submodule "labs/HW1"]
+	path = labs/HW1
+	url = https://github.com/goncaloosimoes/ZeroMonos.git
