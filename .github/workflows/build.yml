@@ -10,6 +10,10 @@ on:
       - master
       - main
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   build:
     name: Build and analyze
@@ -40,12 +44,17 @@ jobs:
         working-directory: HW1/zeromonos
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B clean verify \
+          org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+          -DskipTests=false \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.organization=${{ vars.SONAR_ORG }} \
+          -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
       - name: Upload JaCoCo coverage reports
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: HW1/zeromonos/target/site/jacoco/
-          retention-days: 7
+          retention-days: 7 
 
